@@ -7,4 +7,5 @@ def api_to_domain(payload):
 def domain_to_db(user):
     return {
         "id": user["user_id"],
-      
+        "email_address": user["email"]
+    }

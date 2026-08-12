@@ -1,0 +1,8 @@
+# .github/workflows/ci.yml - current state
+stages:
+  - lint:           2 min
+  - install-deps:   4 min
+  - unit tests:    6 min
+  - integration:    8 min
+  - e2e:           2 min
+  # Total:         22 min (sequential)
