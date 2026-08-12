@@ -1,0 +1,11 @@
+# Alert on the cause (connection pool), not the symptom (HTTP 500s)
+- alert: DatabaseConnectionPoolExhausted
+  expr: db_pool_active_connections / db_pool_max_connections > 0.90
+  for: 2m
+  labels:
+    severity: page
+  annotations:
+    summary: "DB connection pool at {{ $value | humanizePercentage }}"
+    cause: "Pool near capacity. Check for connection leaks or long-running transactions."
+    runbook: "https://runbooks.internal/db-pool-exhaustion"
+    top_holders: "{{ query 'topk(3, db_pool_connection_holders)' }}"

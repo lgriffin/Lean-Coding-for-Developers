@@ -1,0 +1,7 @@
+kaizen_card:
+  dimension: "Knowledge distribution"
+  baseline: "Billing system has key-person risk of 1. Only Carmen can modify it."
+  proposed_change: "Carmen pairs with one teammate for 2 hours/week on billing code for 4 sprints"
+  target: "Two developers can independently modify and deploy billing changes"
+  owner: "Carmen + team lead"
+  review_date: "End of sprint 48"

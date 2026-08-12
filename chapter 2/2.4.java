@@ -6,3 +6,4 @@ void createsUser_integration() {
     );
 
     service.createUser("user@example.com");
+}
