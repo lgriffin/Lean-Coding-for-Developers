@@ -1,6 +1,6 @@
 This component works great for the happy path. One thing to consider:
 if the API returns a 500 or the network times out, this will throw
-an unhandled exception and crash the entire dashboard — not just
+an unhandled exception and crash the entire dashboard, not just
 this chart.
 
 Two options:

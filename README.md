@@ -48,17 +48,17 @@ Some listings in the book are not runnable code but structured documents (kaizen
 
 | # | Title | Listings |
 |---|-------|----------|
-| 1 | Why Lean, Why Now? | 1 |
+| 1 | Why Lean, Why Now? | 0 |
 | 2 | Value and Waste in Software | 7 |
 | 3 | AI as a Partner and Problem | 6 |
-| 4 | Writing Lean Code | 11 |
-| 5 | Testing as Waste Prevention | 11 |
-| 6 | Flow in Your Development Cycle | 1 |
-| 7 | Taming Legacy Code | 10 |
+| 4 | Writing Lean Code | 10 |
+| 5 | Testing as Waste Prevention | 10 |
+| 6 | Flow in Your Development Cycle | 0 |
+| 7 | Taming Legacy Code | 9 |
 | 8 | Root Cause Thinking for Developers | 5 |
 | 9 | Measuring What Matters | 2 |
 | 10 | Kaizen: Continuous Improvement | 5 |
-| 11 | Architectures That Flow | 4 |
+| 11 | Architectures That Flow | 3 |
 | 12 | Lean Operations and Production | 5 |
 | 13 | Lean Team Culture | 5 |
 | 14 | Personal Lean: Building Habits | 7 |

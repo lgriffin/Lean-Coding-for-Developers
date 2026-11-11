@@ -1,4 +1,12 @@
-def test_payment_service_uses_stripe_client():
-    service = PaymentService()
-    assert isinstance(service.gateway, StripeGatewayClient)
-    assert service.gateway.api_version == "2023-10-16"
+class PaymentService:
+    def process(self, order):
+        if order.amount <= 0:
+            raise ValueError("Invalid amount")
+
+        if not self.gateway.charge(order):
+            return "failed"
+
+        self.inventory.reserve(order)
+        self.email.send_confirmation(order)
+
+        return "success"

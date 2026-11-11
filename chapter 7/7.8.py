@@ -1,21 +1,17 @@
-HIGH_VALUE_THRESHOLD = 5000
+def process_payment(request):
+    if should_use_new_system(request):
+        return new_payment_service.process(request)
+    else:
+        return legacy_payment_system.process(request)
 
-def notify_order_confirmed(order):
-    message = format_confirmation(order)
-    for channel in channels_for(order):
-        channel(order, message)
-    order.mark_notified()
+def should_use_new_system(request):
+    # Phase 1: Internal test traffic only
+    if request.headers.get('X-Internal-Test'):
+        return True
 
-def channels_for(order):
-    yield send_email
-    if order.total >= HIGH_VALUE_THRESHOLD:
-        yield send_sms
-    if order.customer_has_app:
-        yield send_push_notification
-    yield send_slack
+    # Phase 2: 1% of production traffic
+    if hash(request.user_id) % 100 == 0:
+        return True
 
-def format_confirmation(order):
-    return {
-        "subject": f"Order #{order.id} confirmed",
-        "body": f"Order {order.id} for {order.customer_name}, total {order.total}.",
-    }
+    # Phase 3: Gradually increase to 10%, 25%, 50%, 100%
+    return rollout_percentage_for_user(request.user_id) < CURRENT_ROLLOUT_PCT

@@ -1,8 +1,6 @@
-// UserProfile.tsx
-import styled from 'styled-components';
+// Existing pattern in the codebase (50+ components)
+import styles from './Dashboard.module.css';
 
- const ProfileCard = styled.div` 
-  padding: 20px;
-  background: white;
- `; 
+// New pattern AI introduced (now spreading)
+import styled from 'styled-components';
 }

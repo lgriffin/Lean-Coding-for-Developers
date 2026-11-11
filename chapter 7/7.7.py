@@ -1,19 +1,21 @@
 HIGH_VALUE_THRESHOLD = 5000
 
 def notify_order_confirmed(order):
-    subject = f"Order #{order.id} confirmed"
-    body = f"Hi {order.customer_name}, your order of {order.total} has shipped."
-
-    smtp.send_mail(
-        to=order.customer_email,
-        subject=subject,
-        body=body,
-    )
-
-    if order.total >= HIGH_VALUE_THRESHOLD:
-        sms.send(
-            to=order.warehouse_manager_phone,
-            message=f"High-value order #{order.id} ({order.total}) confirmed. Expedite.",
-        )
-
+    message = format_confirmation(order)
+    for channel in channels_for(order):
+        channel(order, message)
     order.mark_notified()
+
+def channels_for(order):
+    yield send_email
+    if order.total >= HIGH_VALUE_THRESHOLD:
+        yield send_sms
+    if order.customer_has_app:
+        yield send_push_notification
+    yield send_slack
+
+def format_confirmation(order):
+    return {
+        "subject": f"Order #{order.id} confirmed",
+        "body": f"Order {order.id} for {order.customer_name}, total {order.total}.",
+    }

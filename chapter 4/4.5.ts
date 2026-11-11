@@ -1,9 +1,6 @@
-// Hard to delete: implicitly depends on global state
-function process() {
-  const config = globalConfig.processingRules; // Where did this come from?
+// main.ts
+if (config.enableNewExportFormat) {
+  exportService.initialize();
 }
 
-// Easy to delete: explicitly declared
-function process(config: ProcessingRules) {
-  // Clear what this needs
-}
+// Later: flip the flag, delete the exportService module, done

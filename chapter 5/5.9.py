@@ -1,12 +1,8 @@
-class PaymentService:
-    def process(self, order):
-        if order.amount <= 0:
-            raise ValueError("Invalid amount")
+def test_invalid_amount_raises():
+    with pytest.raises(ValueError):
+        service.process(order_with_zero_amount)
 
-        if not self.gateway.charge(order):
-            return "failed"
-
-        self.inventory.reserve(order)
-        self.email.send_confirmation(order)
-
-        return "success"
+def test_success_path_executes():
+    mock_gateway.approve()
+    result = service.process(valid_order)
+    assert result == "success"
