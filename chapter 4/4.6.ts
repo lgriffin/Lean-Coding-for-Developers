@@ -1,6 +1,4 @@
-// main.ts
-if (config.enableNewExportFormat) {
-  exportService.initialize();
+function validateEmail(email: string): boolean {
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return regex.test(email);
 }
-
-// Later: flip the flag, delete the exportService module, done

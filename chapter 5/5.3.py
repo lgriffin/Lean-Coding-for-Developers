@@ -1,7 +1,9 @@
-def test_order_expires_after_30_minutes():
-    order = create_order()
+# Production code
+DISCOUNT_TABLE = {
+    "gold": 0.20,
+    "silver": 0.10,
+    "basic": 0.00,
+}
 
-    advance_time(minutes=30)
-    process_expirations()
-
-    assert order.status == "expired"
+def calculate_discount(price: float, tier: str) -> float:
+    return price * DISCOUNT_TABLE.get(tier, 0.0)
