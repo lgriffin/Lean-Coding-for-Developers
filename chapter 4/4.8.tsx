@@ -3,4 +3,3 @@ import styles from './Dashboard.module.css';
 
 // New pattern AI introduced (now spreading)
 import styled from 'styled-components';
-}
