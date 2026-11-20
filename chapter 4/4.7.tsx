@@ -5,4 +5,3 @@ const ProfileCard = styled.div`
   padding: 20px;
   background: white;
 `;
-}
