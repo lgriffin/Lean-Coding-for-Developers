@@ -22,4 +22,4 @@ def payment_outage_runbook():
 
     if depth > 500:
         print("  ESCALATE: Queue backing up. Page payments team lead.")
-        page_oncall("payments-team-lead", "Queue depth critical: {depth}")
+        page_oncall("payments-team-lead", f"Queue depth critical: {depth}")
